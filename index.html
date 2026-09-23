@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammed Jamai — Portfolio</title>
+    <!-- Premium Grotesk Font Set via Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* CSS RESET & CUSTOM PROPERTIES */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -20,7 +22,6 @@
             --ink-color: #111111;
             --ink-muted: #666666;
             --signal-green: #34c759;
-            --signal-red: #ff3b30;
             --border-color: #111111;
             --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -41,13 +42,14 @@
             transition: color 0.15s ease;
         }
 
+        /* GLOBAL PAGE WRAPPER */
         .wrapper {
             display: flex;
             min-height: 100vh;
             width: 100%;
         }
 
-        /* SIDEBAR (FIXED LEFT) */
+        /* SIDEBAR (FIXED LEFT ON DESKTOP) */
         aside {
             position: fixed;
             top: 0;
@@ -104,7 +106,7 @@
         }
 
         .nav-link:hover {
-            color: var(--signal-red);
+            color: var(--ink-muted);
         }
 
         .nav-link.active::after {
@@ -133,12 +135,11 @@
             align-items: center;
             gap: 8px;
             color: var(--ink-muted);
-            font-weight: 500;
         }
 
         .status-dot {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background-color: var(--signal-green);
             display: inline-block;
@@ -155,19 +156,20 @@
             text-decoration: underline;
         }
 
-        /* MOBILE HEADER */
+        /* MOBILE HEADER CONTAINER */
         .mobile-header {
             display: none;
         }
 
-        /* CONTENT REGION */
+        /* SCROLLABLE CONTENT REGION */
         main {
             margin-left: 320px;
             flex: 1;
-            padding: 80px 10%;
+            padding: 80px 8%;
             max-width: 1200px;
         }
 
+        /* VIEWS MANAGEMENT */
         .view-section {
             display: none;
             opacity: 0;
@@ -179,43 +181,46 @@
             opacity: 1;
         }
 
-        /* HERO LAYOUT WITH PICTURE PLACEHOLDER */
-        .home-grid {
+        /* PROFILE LAYOUT BLOCK */
+        .profile-container {
             display: flex;
             gap: 48px;
             align-items: flex-start;
-            margin-bottom: 64px;
+            margin-bottom: 48px;
         }
 
-        .home-main-content {
+        .hero-text-block {
             flex: 1;
-        }
-
-        .profile-picture-container {
-            width: 220px;
-            flex-shrink: 0;
-        }
-
-        .profile-picture-placeholder {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            background-color: #ededed;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--ink-muted);
         }
 
         h1.hero-headline {
             font-size: 38px;
             font-weight: 700;
             letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 32px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .profile-image-frame {
+            width: 200px;
+            height: 266px; /* 3:4 Boutique Fashion Aspect Ratio */
+            border: 1px solid var(--border-color);
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .profile-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .section-label {
@@ -226,17 +231,12 @@
             color: var(--ink-muted);
             margin-bottom: 24px;
             display: block;
-            margin-top: 40px;
-        }
-
-        .section-label:first-of-type {
-            margin-top: 0;
         }
 
         /* SPEC SHEET GRID */
         .spec-sheet {
             border-top: 1px solid var(--border-color);
-            margin-bottom: 48px;
+            margin-bottom: 64px;
         }
 
         .spec-row {
@@ -247,8 +247,8 @@
         }
 
         .spec-label {
-            width: 35%;
-            font-weight: 500;
+            width: 30%;
+            font-weight: 600;
             padding-right: 20px;
             text-transform: uppercase;
             font-size: 13px;
@@ -256,20 +256,22 @@
         }
 
         .spec-value {
-            width: 65%;
+            width: 70%;
             font-size: 15px;
         }
 
-        /* FUTURE VISION BLOCK */
-        .vision-block {
+        /* AI DEVELOPMENT PREVIEW BLOCK */
+        .ai-deployment-block {
             border: 1px solid var(--border-color);
             padding: 24px;
-            margin-top: 48px;
-            background-color: #f2f2f2;
+            margin-top: 64px;
+            margin-bottom: 48px;
+            background-color: var(--bg-color);
         }
-        .vision-title {
-            font-weight: 700;
+
+        .ai-title {
             font-size: 14px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 8px;
@@ -277,14 +279,36 @@
             align-items: center;
             gap: 8px;
         }
-        .vision-text {
+
+        .ai-title::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--ink-color);
+            display: inline-block;
+        }
+
+        .ai-desc {
             font-size: 14px;
             color: var(--ink-muted);
+            max-width: 700px;
+        }
+
+        .navigation-hint {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--ink-muted);
+            cursor: pointer;
+            display: inline-block;
+        }
+        .navigation-hint:hover {
+            color: var(--ink-color);
+            text-decoration: underline;
         }
 
         /* CATALOGUE INDEX LISTS */
         .catalogue-list {
-            margin-bottom: 48px;
+            margin-bottom: 80px;
         }
 
         .catalogue-item {
@@ -320,7 +344,7 @@
             max-width: 750px;
         }
 
-        /* EDUCATION STYLING */
+        /* EDUCATION STYLING (UNNUMBERED) */
         .edu-item {
             display: flex;
             border-top: 1px solid var(--border-color);
@@ -333,47 +357,147 @@
             width: 25%;
             font-size: 14px;
             font-weight: 500;
+            color: var(--ink-muted);
         }
         .edu-details {
             width: 75%;
         }
         .edu-degree {
-            font-weight: 600;
+            font-weight: 700;
             font-size: 16px;
         }
         .edu-school {
-            color: var(--ink-muted);
+            color: var(--ink-color);
+            margin-top: 4px;
         }
 
-        /* PROJECTS GRID */
+        /* INDEPENDENT PROJECTS SECTION */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 32px;
+            gap: 40px;
+            margin-bottom: 64px;
         }
+
         .project-card {
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-color);
+        }
+
+        .project-media-container {
+            width: 100%;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 24px;
+            background-color: #eaeaea;
+            position: relative;
         }
-        .project-id {
-            font-family: monospace;
-            font-size: 12px;
-            color: var(--ink-muted);
-            margin-bottom: 8px;
+
+        /* 16:9 Image Placeholder Frame */
+        .project-image-placeholder {
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
-        .project-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .project-description {
-            font-size: 14px;
+
+        .project-image-placeholder span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             color: var(--ink-muted);
         }
 
+        .project-image-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 16:9 Video Embed Wrapper */
+        .project-video-wrapper {
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+            background-color: #f0f0f0;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+        }
+
+        .project-video-wrapper iframe, .project-video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .project-video-placeholder-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-muted);
+            text-align: center;
+            width: 90%;
+        }
+
+        .project-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .project-text {
+            font-size: 14px;
+            color: var(--ink-muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .project-btn {
+            align-self: flex-start;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            background-color: var(--ink-color);
+            color: var(--bg-color);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .project-btn:hover {
+            background-color: transparent;
+            color: var(--ink-color);
+        }
+
         /* JOURNAL WRAPPER */
+        .journal-container {
+            margin-bottom: 64px;
+        }
         .journal-section {
             margin-bottom: 48px;
         }
@@ -384,7 +508,7 @@
             padding-bottom: 8px;
             margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
         }
         .journal-list {
             list-style: none;
@@ -423,15 +547,22 @@
             padding-bottom: 4px;
         }
         .action-mailto:hover {
-            color: var(--signal-red);
-            border-color: var(--signal-red);
+            color: var(--ink-muted);
+            border-color: var(--ink-muted);
         }
 
+        /* MOBILE REFLOW LOGIC */
         .mobile-footer-info {
             display: none;
         }
 
-        /* RESPONSIVE DESIGN */
+        @media (max-width: 980px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
         @media (max-width: 900px) {
             .wrapper {
                 flex-direction: column;
@@ -452,20 +583,20 @@
                 height: 60px;
                 background-color: var(--bg-color);
                 border-bottom: 1px solid var(--border-color);
-                padding: 0 16px;
+                padding: 0 24px;
                 z-index: 1000;
             }
 
             .mobile-brand {
                 font-weight: 700;
-                font-size: 14px;
+                font-size: 15px;
                 text-transform: uppercase;
                 letter-spacing: -0.02em;
             }
 
             .mobile-nav {
                 display: flex;
-                gap: 10px;
+                gap: 14px;
                 list-style: none;
             }
 
@@ -476,19 +607,18 @@
 
             main {
                 margin-left: 0;
-                padding: 90px 20px 60px 20px;
+                padding: 100px 24px 60px 24px;
                 width: 100%;
             }
 
-            .home-grid {
+            .profile-container {
                 flex-direction: column-reverse;
                 gap: 24px;
             }
 
-            .profile-picture-container {
-                width: 100%;
-                max-width: 240px;
-                margin: 0 auto;
+            .profile-image-frame {
+                width: 140px;
+                height: 186px;
             }
 
             h1.hero-headline {
@@ -497,7 +627,7 @@
 
             .spec-row {
                 flex-direction: column;
-                gap: 4px;
+                gap: 6px;
             }
 
             .spec-label {
@@ -515,15 +645,19 @@
 
             .catalogue-index {
                 width: auto;
+                margin-bottom: 2px;
             }
 
-            .catalogue-body, .edu-date, .edu-details {
+            .catalogue-body {
                 width: 100%;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
+            .edu-date {
+                width: 100%;
+            }
+
+            .edu-details {
+                width: 100%;
             }
 
             .mobile-footer-info {
@@ -538,7 +672,7 @@
 <body>
 
     <div class="wrapper">
-        <!-- FIXED SIDEBAR -->
+        <!-- DESKTOP SIDEBAR -->
         <aside>
             <div class="brand-block">
                 <div class="initials">MJ</div>
@@ -568,9 +702,9 @@
             </div>
         </aside>
 
-        <!-- MOBILE TOP BAR -->
+        <!-- MOBILE HEADER -->
         <header class="mobile-header">
-            <div class="mobile-brand" onclick="switchView('home')">M. JAMAI</div>
+            <div class="mobile-brand" onclick="switchView('home')">MJAMAI</div>
             <ul class="mobile-nav">
                 <li class="nav-link active" onclick="switchView('home')">Home</li>
                 <li class="nav-link" onclick="switchView('resume')">Resume</li>
@@ -580,19 +714,20 @@
             </ul>
         </header>
 
-        <!-- INTERACTIVE SCROLL CONTAINER -->
+        <!-- MAIN SCROLL REGION -->
         <main>
             
             <!-- HOME VIEW -->
             <section id="view-home" class="view-section active-view">
-                <div class="home-grid">
-                    <div class="home-main-content">
-                        <h1 class="hero-headline">Digital twin and model engineer for battery, power electronics and powertrain — experienced with embedded systems.</h1>
+                <div class="profile-container">
+                    <div class="hero-text-block">
+                        <h1 class="hero-headline">Digital twin and model engineer for battery, power electronics and powertrain i worked also on embedded system</h1>
                     </div>
-                    <div class="profile-picture-container">
-                        <!-- Replace src with your picture path when ready -->
-                        <div class="profile-picture-placeholder">
-                            <span>Image Area</span>
+                    <!-- 3:4 Boutique Portrait Framing for Profile Photo -->
+                    <div class="profile-frame-wrapper">
+                        <div class="profile-image-frame">
+                            <!-- Replace src="" with real path (e.g. img/profile.jpg) when ready -->
+                            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='266' viewBox='0 0 200 266'><rect width='100%'' height='100%' fill='%23eaeaea'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23666'>[ PLACE PHOTO HERE ]</text></svg>" alt="Mohammed Jamai">
                         </div>
                     </div>
                 </div>
@@ -601,47 +736,44 @@
                 <div class="spec-sheet">
                     <div class="spec-row">
                         <div class="spec-label">Digital Twin</div>
-                        <div class="spec-value">High-fidelity functional modeling and real-time physical simulation fields.</div>
+                        <div class="spec-value">Physics-based and operational systems running on high-fidelity MATLAB and Simulink architectures focused heavily on electrified solution spaces.</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-label">Validation model (MBD)</div>
-                        <div class="spec-value">Model-Based Design flows across MiL, SiL, and HiL loops.</div>
+                        <div class="spec-label">Validation model (mbd)</div>
+                        <div class="spec-value">Model-Based Design lifecycle validation frameworks utilizing MiL, SiL, and HiL testing platforms.</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Power electronics & batteries</div>
-                        <div class="spec-value">Converter control setups, cell chemistry behavior, and thermal analytics.</div>
+                        <div class="spec-value">Advanced structural and behavioral tracking focused specifically on Lithium-Ion, Redox-Flow, and Hydrogen fuel cell technology matrices.</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-label">Powertrain</div>
-                        <div class="spec-value">Complete multi-physics electric powertrain synthesis and performance evaluation.</div>
+                        <div class="spec-label">Power train</div>
+                        <div class="spec-value">Complete multi-physics architecture scaling and control, thoroughly encompassing complex power electronics grids and high-efficiency electrical machines.</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Embedded software</div>
-                        <div class="spec-value">Safety-critical control laws executing in low-latency C/C++ architecture.</div>
+                        <div class="spec-value">Low-level embedded safety systems execution incorporating real-time safety critical code diagnostics alongside structured FMEA analysis.</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-label">Control</div>
-                        <div class="spec-value">Advanced algorithm tuning, loop closed feedback design, and stability analysis.</div>
+                        <div class="spec-label">Controle</div>
+                        <div class="spec-value">Design, simulation, and hardware implementation of loop-closure regulation laws targeting fast-switching transient electrical environments.</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Simulation</div>
-                        <div class="spec-value">Electromagnetic, mechanical stress, and absolute thermal mapping models.</div>
+                        <div class="spec-value">Coupled multi-physics evaluations targeting highly technical electromagnetic, thermal dynamics, and underlying structural mechanical stress conditions.</div>
                     </div>
                 </div>
 
-                <!-- FUTURE AI INITIATIVE ACCELERATOR SPACE -->
-                <div class="vision-block">
-                    <div class="vision-title">
-                        <span class="status-dot" style="background-color: var(--ink-color);"></span>
-                        AI-Accelerated Simulation Research
-                    </div>
-                    <div class="vision-text">
-                        [Development Space]: Currently engineering the convergence of physics-based models and machine learning pipelines. Future updates will detail deep learning frameworks utilized to accelerate complex transient mechatronic simulations.
-                    </div>
+                <!-- AI Future Scope Block (No research reference, deployment focused) -->
+                <div class="ai-deployment-block">
+                    <div class="ai-title">Simulation Accelerated by AI</div>
+                    <div class="ai-desc">Space reserved for the direct deployment of neural network inference modules, physics-informed machine learning (PINNs), and high-speed surrogate model pipelines to accelerate physical simulation execution boundaries.</div>
                 </div>
+
+                <div class="navigation-hint" onclick="switchView('resume')">View complete engineering documentation on Resume →</div>
 
                 <div class="mobile-footer-info">
-                    <span class="section-label">Status & Details</span>
+                    <span class="section-label">Availability & Contact</span>
                     <div class="availability-line" style="margin-bottom: 12px;">
                         <span class="status-dot"></span> Available for new projects
                     </div>
@@ -653,7 +785,7 @@
             <!-- RESUME VIEW -->
             <section id="view-resume" class="view-section">
                 
-                <!-- 1. EDUCATION (ENSEEIHT FIRST) -->
+                <!-- 1. EDUCATION SECTION (AT THE TOP) -->
                 <span class="section-label">Education</span>
                 <div class="catalogue-list">
                     <div class="edu-item">
@@ -686,7 +818,7 @@
                     </div>
                 </div>
 
-                <!-- 2. TECHNICAL SPECS -->
+                <!-- 2. TECHNICAL SPECS SECTION (SECOND) -->
                 <span class="section-label">Technical Specs</span>
                 <div class="spec-sheet">
                     <div class="spec-row">
@@ -695,7 +827,7 @@
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Process</div>
-                        <div class="spec-value">Git, Polarion, Jira, Confluence, Scrum/Kanban, V-model, ISO 26262</div>
+                        <div class="spec-value">Git, Polarion, Jira, Confluence, Scrum/Kanban, V-model, ISO 26262, FMEA, Safety Diagnostics</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Languages</div>
@@ -707,140 +839,197 @@
                     </div>
                 </div>
 
-                <!-- 3. TIMED EXPERIENCE DOSSIER (STANDALONE AS REQUESTED) -->
+                <!-- 3. CHRONOLOGICAL EXPERIENCE WITH MONTH DETAIL -->
                 <span class="section-label">Professional Experience</span>
                 <div class="catalogue-list">
                     <div class="catalogue-item">
                         <div class="catalogue-index">01</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2023–2025 · Model-Based Design Engineer — Vitesco Technologies (Schaeffler Group)</div>
-                            <div class="catalogue-desc">Based in Toulouse, for clients Renault, Mercedes-Benz and Ford. Modeled and validated complex embedded components for high-voltage electric and hybrid powertrains using continuous MiL, SiL and HiL loops. Tasks focused heavily on the HV Box 2.0/3.0 architecture and Ford's 48V sub-system DC-DC converter frameworks.</div>
+                            <div class="catalogue-meta">Oct 2023 – Sep 2025 · Model-Based Design Engineer</div>
+                            <div class="catalogue-desc">Vitesco Technologies (Schaeffler Group), Toulouse, for Renault, Mercedes-Benz and Ford. Modeled and validated embedded components for electric and hybrid powertrains using MiL, SiL and HiL architectures. Core focus centered around structural calculations for the HV Box 2.0/3.0 platform alongside Ford's 48V DC-DC converter modules.</div>
                         </div>
                     </div>
                     <div class="catalogue-item">
                         <div class="catalogue-index">02</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2022–2023 · Embedded Software Engineer — Safra</div>
-                            <div class="catalogue-desc">Located in Albi, focusing directly on HYCITY and BUSINOVA high-capacity hydrogen mass transit buses. Developed core ECU application software executing critical functional tasks across driving dynamics, fuel propulsion control, safety systems, and automated thermal comfort loops. Handled total requirements traceability tasks via Polarion under ISO 26262 criteria.</div>
+                            <div class="catalogue-meta">Nov 2022 – Sep 2023 · Embedded Software Engineer</div>
+                            <div class="catalogue-desc">Safra, Albi. Deployed safety-critical firmware for HYCITY and BUSINOVA hydrogen fuel cell buses. Developed low-level ECU software architectures governing drive loops, high-voltage propulsion units, thermal balancing, and embedded vehicle safety configurations. Standardized requirements traceability mapping within Polarion to satisfy ISO 26262 frameworks.</div>
                         </div>
                     </div>
                     <div class="catalogue-item">
                         <div class="catalogue-index">03</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2022 · Battery Modeling Engineer — Artelia Group</div>
-                            <div class="catalogue-desc">Based in Lyon, delivering analytical structures for client TotalEnergies. Formulated detailed lithium-ion and redox-flow stationary battery cell behaviors natively inside MATLAB and Simulink environments. Constructed functional techno-economic evaluation models mapping CAPEX and OPEX variables.</div>
+                            <div class="catalogue-meta">Mar 2022 – Oct 2022 · Battery Modeling Engineer</div>
+                            <div class="catalogue-desc">Artelia Group, Lyon, for TotalEnergies. Engineered advanced mathematical behavioral profiles for lithium-ion systems and stationary redox-flow layouts within MATLAB and Simulink environments. Drafted custom data analytical scripts to generate techno-economic infrastructure projections (CAPEX/OPEX).</div>
                         </div>
                     </div>
                     <div class="catalogue-item">
                         <div class="catalogue-index">04</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2022 · Mechatronics Engineer — Kythera</div>
-                            <div class="catalogue-desc">Located in Colomiers. Spearheaded complete hardware-software lifecycle definition for a custom high-precision servomotor validation test bench. Engineered all low-level sensor instrumentation setups, localized physical mechanical housing integration systems, and laid out custom schematic PCB designs.</div>
+                            <div class="catalogue-meta">Feb 2022 – Jun 2022 · Mechatronics Engineer</div>
+                            <div class="catalogue-desc">Kythera, Colomiers. Designed, integrated, and constructed a fully operational physical servomotor test bench platform. Managed analog sensor conditioning instrumentation calibration setups, hardware casing design layouts, and functional multi-layer PCB routing configurations.</div>
                         </div>
                     </div>
                     <div class="catalogue-item">
                         <div class="catalogue-index">05</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2021–2022 · Electric Turboprop Design Project — Safran & ArianeGroup</div>
-                            <div class="catalogue-desc">Academic-Industrial engineering deployment in Toulouse. Formulated multi-physics layout calculations and design bounds targeting performance equivalent to a Pratt & Whitney PT6 gas turbine engine.</div>
+                            <div class="catalogue-meta">Sep 2021 – Feb 2022 · Electric Turboprop Design Project</div>
+                            <div class="catalogue-desc">Safran & ArianeGroup, Toulouse. Supervised multi-physics scaling and sizing pipelines tracking high-output electric turboprop designs tailored to target standard Pratt & Whitney PT6 operational limits.</div>
                         </div>
                     </div>
                     <div class="catalogue-item">
                         <div class="catalogue-index">06</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2021 · Materials Testing and Instrumentation — CNRS</div>
-                            <div class="catalogue-desc">Scientific research lab deployment. Built dedicated high-speed sensor data capture configurations and experimental rigs designed to measure physical property transitions in nickel-titanium shape-memory alloy structures.</div>
+                            <div class="catalogue-meta">Jan 2021 – Jul 2021 · Materials Testing and Instrumentation</div>
+                            <div class="catalogue-desc">CNRS Research Project. Developed automated physical laboratory experiment setups focused on mapping stress performance limits characterizing nickel-titanium shape-memory alloy components.</div>
                         </div>
                     </div>
                     <div class="catalogue-item">
                         <div class="catalogue-index">07</div>
                         <div class="catalogue-body">
-                            <div class="catalogue-meta">2017 · Electronic Technician (Internship) — OCP Group</div>
-                            <div class="catalogue-desc">Based in Youssoufia, Morocco. Managed daily industrial predictive electrical maintenance workflows, line inspections, and hardware calibration routines inside a high-output phosphate calcination complex.</div>
+                            <div class="catalogue-meta">Apr 2017 – Jun 2017 · Electronic Technician (Internship)</div>
+                            <div class="catalogue-desc">OCP Group, Youssoufia, Morocco. Maintained heavy power distribution architectures, routing panels, and electronic monitoring hardware plants within a phosphate calcination industrial processing asset.</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- INDEPENDENT PROJECTS VIEW -->
+            <!-- INDEPENDENT PROJECTS VIEW (ENTIRELY ISOLATED FROM EXPERIENCE) -->
             <section id="view-projects" class="view-section">
-                <span class="section-label">Personal Work Samples</span>
-                <p style="color: var(--ink-muted); font-size:14px; margin-bottom: 24px; max-width: 600px;">A clean, unlinked portfolio index displaying independent software repositories, hardware design files, and physics-based models built outside professional employment.</p>
+                <span class="section-label">Personal Work & Individual Repositories</span>
                 
                 <div class="projects-grid">
+                    <!-- PROJECT SLOT 1 -->
                     <div class="project-card">
-                        <div class="project-id">PROJECT 01</div>
-                        <div class="project-title">Validating EV Power Electronics Frameworks</div>
-                        <div class="project-description">MiL and HiL validation implementations modeling PFC configurations, isolated DC/DC converters, and multi-stage input EMC filter matrices shifted from native Simulink objects onto targeted dSPACE SCALEXIO FPGA chips.</div>
+                        <div class="project-media-container">
+                            <div class="project-image-placeholder">
+                                <span>[ DEMO IMAGE - PROJ 01 ]</span>
+                            </div>
+                            <div class="project-video-wrapper">
+                                <div class="project-video-placeholder-text">[ EXPLAINER VIDEO — RUNTIME DEMO ]</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Project 01 — Title Space Holder</div>
+                            <div class="project-text">Describe the personal project engineering system, the problem solved, and specific tools used. This field is independent of professional employment histories.</div>
+                            <button class="project-btn" onclick="window.open('#', '_blank')">See Project</button>
+                        </div>
                     </div>
+
+                    <!-- PROJECT SLOT 2 -->
                     <div class="project-card">
-                        <div class="project-id">PROJECT 02</div>
-                        <div class="project-title">Safety-Critical Hydrogen Propulsion Logic</div>
-                        <div class="project-description">Custom C/C++ control loop scripts executing safety-critical vehicle maneuvers. Documented against ISO 26262 guidelines using formal failure mode analysis (FMEA) metrics and ASIL breakdown structures.</div>
+                        <div class="project-media-container">
+                            <div class="project-image-placeholder">
+                                <span>[ DEMO IMAGE - PROJ 02 ]</span>
+                            </div>
+                            <div class="project-video-wrapper">
+                                <div class="project-video-placeholder-text">[ EXPLAINER VIDEO — RUNTIME DEMO ]</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Project 02 — Title Space Holder</div>
+                            <div class="project-text">Describe the personal project engineering system, the problem solved, and specific tools used. This field is independent of professional employment histories.</div>
+                            <button class="project-btn" onclick="window.open('#', '_blank')">See Project</button>
+                        </div>
                     </div>
+
+                    <!-- PROJECT SLOT 3 -->
                     <div class="project-card">
-                        <div class="project-id">PROJECT 03</div>
-                        <div class="project-title">Stationary Storage Techno-Economic Tracker</div>
-                        <div class="project-description">Mathematical physics tracking module modeling lithium-ion and redox-flow chemistries paired to a custom desktop dashboard app written in Python to map infrastructure investment horizons.</div>
+                        <div class="project-media-container">
+                            <div class="project-image-placeholder">
+                                <span>[ DEMO IMAGE - PROJ 03 ]</span>
+                            </div>
+                            <div class="project-video-wrapper">
+                                <div class="project-video-placeholder-text">[ EXPLAINER VIDEO — RUNTIME DEMO ]</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Project 03 — Title Space Holder</div>
+                            <div class="project-text">Describe the personal project engineering system, the problem solved, and specific tools used. This field is independent of professional employment histories.</div>
+                            <button class="project-btn" onclick="window.open('#', '_blank')">See Project</button>
+                        </div>
                     </div>
+
+                    <!-- PROJECT SLOT 4 -->
                     <div class="project-card">
-                        <div class="project-id">PROJECT 04</div>
-                        <div class="project-title">Multi-Physics Electric Turboprop Simulation</div>
-                        <div class="project-description">Detailed electrical and magnetic flux transient configurations generated inside PLECS and Ansys Maxwell platforms, feeding high-level system behavioral nodes in a MATLAB loop.</div>
+                        <div class="project-media-container">
+                            <div class="project-image-placeholder">
+                                <span>[ DEMO IMAGE - PROJ 04 ]</span>
+                            </div>
+                            <div class="project-video-wrapper">
+                                <div class="project-video-placeholder-text">[ EXPLAINER VIDEO — RUNTIME DEMO ]</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Project 04 — Title Space Holder</div>
+                            <div class="project-text">Describe the personal project engineering system, the problem solved, and specific tools used. This field is independent of professional employment histories.</div>
+                            <button class="project-btn" onclick="window.open('#', '_blank')">See Project</button>
+                        </div>
                     </div>
+
+                    <!-- PROJECT SLOT 5 -->
                     <div class="project-card">
-                        <div class="project-id">PROJECT 05</div>
-                        <div class="project-title">[Project Space — Available for Custom Work]</div>
-                        <div class="project-description">Placeholder slot ready for upcoming engineering files. This space will showcase independent mechatronic assemblies, algorithmic control loops, or firmware repositories.</div>
+                        <div class="project-media-container">
+                            <div class="project-image-placeholder">
+                                <span>[ DEMO IMAGE - PROJ 05 ]</span>
+                            </div>
+                            <div class="project-video-wrapper">
+                                <div class="project-video-placeholder-text">[ EXPLAINER VIDEO — RUNTIME DEMO ]</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Project 05 — Title Space Holder</div>
+                            <div class="project-text">Describe the personal project engineering system, the problem solved, and specific tools used. This field is independent of professional employment histories.</div>
+                            <button class="project-btn" onclick="window.open('#', '_blank')">See Project</button>
+                        </div>
                     </div>
+
+                    <!-- PROJECT SLOT 6 -->
                     <div class="project-card">
-                        <div class="project-id">PROJECT 06</div>
-                        <div class="project-title">[Project Space — Available for Custom Work]</div>
-                        <div class="project-description">Placeholder slot ready for upcoming engineering files. This space will showcase independent mechatronic assemblies, algorithmic control loops, or firmware repositories.</div>
+                        <div class="project-media-container">
+                            <div class="project-image-placeholder">
+                                <span>[ DEMO IMAGE - PROJ 06 ]</span>
+                            </div>
+                            <div class="project-video-wrapper">
+                                <div class="project-video-placeholder-text">[ EXPLAINER VIDEO — RUNTIME DEMO ]</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Project 06 — Title Space Holder</div>
+                            <div class="project-text">Describe the personal project engineering system, the problem solved, and specific tools used. This field is independent of professional employment histories.</div>
+                            <button class="project-btn" onclick="window.open('#', '_blank')">See Project</button>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- JOURNAL VIEW -->
+            <!-- JOURNAL VIEW (NOTES AND RESSOURCES ONLY) -->
             <section id="view-journal" class="view-section">
-                <span class="section-label">Notes & Audience Resources</span>
+                <span class="section-label">Journal</span>
                 
-                <div class="journal-section">
-                    <div class="journal-heading">Masterclasses & Lecture Documents</div>
-                    <ul class="journal-list">
-                        <li class="journal-item">
-                            <a href="#" onclick="return false;">[Placeholder Link] Live Masterclass: Modeling Lithium-Ion Cells</a>
-                            <p>Upcoming engineering presentation session resource details covering structural math algorithms.</p>
-                        </li>
-                        <li class="journal-item">
-                            <a href="#" onclick="return false;">[Placeholder Link] Embedded Systems Optimization Protocols</a>
-                            <p>Downloadable slide decks breaking down low-overhead architectures for functional safety loops.</p>
-                        </li>
-                    </ul>
+                <div class="journal-container">
+                    <div class="journal-section">
+                        <div class="journal-heading">Notes & Ressources</div>
+                        <ul class="journal-list">
+                            <li class="journal-item">
+                                <a href="https://www.mathworks.com" target="_blank" rel="noopener">MATLAB and Simulink Technical Documentation</a>
+                                <p>Operational index of high-fidelity control modeling logic rules.</p>
+                            </li>
+                            <li class="journal-item">
+                                <a href="https://www.pybamm.org" target="_blank" rel="noopener">PyBaMM Engineering Reference</a>
+                                <p>Open source physical equations calculating lithium-ion, redox-flow, and hydrogen matrices.</p>
+                            </li>
+                            <li class="journal-item">
+                                <a href="#" onclick="return false;">Masterclass Slide Repositories & Presentations</a>
+                                <p>Shared storage space allocated for upcoming presentations, educational videos, and audience resource guides.</p>
+                            </li>
+                            <li class="journal-item">
+                                <a href="https://barrgroup.com" target="_blank" rel="noopener">Embedded Systems Diagnostics Standards</a>
+                                <p>System-level baseline guidelines mapping FMEA safety configurations and tracking indices.</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-
-                <div class="journal-section">
-                    <div class="journal-heading">Useful Engineering Linkshares</div>
-                    <ul class="journal-list">
-                        <li class="journal-item">
-                            <a href="https://www.mathworks.com" target="_blank" rel="noopener">MATLAB and Simulink Technical Guides</a>
-                            <p>Core acceleration courses for system verification and framework design.</p>
-                        </li>
-                        <li class="journal-item">
-                            <a href="https://barrgroup.com" target="_blank" rel="noopener">Embedded C Safety Standards</a>
-                            <p>Foundational structural guide rules optimizing security and runtime clarity.</p>
-                        </li>
-                        <li class="journal-item">
-                            <a href="https://www.pybamm.org" target="_blank" rel="noopener">PyBaMM (Python Battery Mathematical Modelling)</a>
-                            <p>Open physics-based cell simulation repository details.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <p style="font-size: 14px; color: var(--ink-muted);">
-                    Have an interesting research topic, tool source, or presentation request to share? 
-                    <a href="mailto:jamai-mohammed@hotmail.com" style="text-decoration: underline; color: var(--ink-color);">Send a reference link via mail</a>.
-                </p>
             </section>
 
             <!-- CONTACT VIEW -->
@@ -872,14 +1061,19 @@
 
     <script>
         function switchView(viewName) {
+            // Hide all layout sections safely
             const sections = document.querySelectorAll('.view-section');
-            sections.forEach(sec => sec.classList.remove('active-view'));
+            sections.forEach(sec => {
+                sec.classList.remove('active-view');
+            });
 
+            // Target correct dynamic view element
             const activeTarget = document.getElementById(`view-${viewName}`);
             if(activeTarget) {
                 activeTarget.classList.add('active-view');
             }
 
+            // Sync structural component highlight status (Desktop Sidebar & Mobile Header)
             const links = document.querySelectorAll('.nav-link');
             links.forEach(link => {
                 if(link.innerText.toLowerCase() === viewName.toLowerCase()) {
@@ -889,6 +1083,7 @@
                 }
             });
 
+            // Smooth clean viewport reset back up to top boundaries
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
     </script>
