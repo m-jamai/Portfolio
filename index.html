@@ -14,32 +14,33 @@
     CONTENT MAP — each piece of information lives in ONE place only
     (see "Content guidelines" in README.md)
 
-    Sidebar ...... logo (= Home), name, navigation, availability
-    Home ......... business card (photo, title, location, bio, profile links),
-                   core capabilities, technical skills, education,
+    Sidebar ...... logo + name (= link to Profile), navigation, availability
+    Profile ...... business card (photo, title, location, bio, profile links),
+                   4 core capabilities, 4 key skills, education,
                    certifications, languages
     Experiences .. professional experience, internships & academic projects,
                    resume download (EN / FR / AR)
-    Projects ..... personal and technical projects
+    Projects ..... personal and technical projects, full technical skills
     Resources .... content from js/resources.js (3 categories)
     Contact ...... email, location, LinkedIn, resume links
 -->
 
     <div class="wrapper">
         <aside>
-            <div class="brand-block">
-                <button class="logo-btn" onclick="switchView('home')" aria-label="Back to home">
+            <button class="brand-block brand-link" onclick="switchView('profile')" aria-label="Mohammed Jamai — go to Profile">
+                <span class="logo-btn">
                     <svg class="logo" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
                         <rect x="16" y="16" width="32" height="32"/>
                         <path d="M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8"/>
                         <path class="logo-accent" d="M28 26l-6 6 6 6M36 26l6 6-6 6"/>
                     </svg>
-                </button>
-                <div class="full-name">Mohammed Jamai</div>
-            </div>
+                </span>
+                <span class="full-name">Mohammed Jamai</span>
+            </button>
 
             <nav aria-label="Main">
                 <ul class="nav-list">
+                    <li class="nav-link" data-view="profile" onclick="switchView('profile')">Profile</li>
                     <li class="nav-link" data-view="experiences" onclick="switchView('experiences')">Experiences</li>
                     <li class="nav-link" data-view="projects" onclick="switchView('projects')">Projects</li>
                     <li class="nav-link" data-view="resources" onclick="switchView('resources')">Resources</li>
@@ -56,7 +57,7 @@
         </aside>
 
         <header class="mobile-header" id="mobile-header">
-            <button class="logo-btn mobile-brand" onclick="switchView('home')" aria-label="Back to home">
+            <button class="logo-btn mobile-brand" onclick="switchView('profile')" aria-label="Go to Profile">
                 <svg class="logo" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
                     <rect x="16" y="16" width="32" height="32"/>
                     <path d="M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8"/>
@@ -65,7 +66,8 @@
             </button>
             <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
             <ul class="mobile-nav" id="mobile-nav">
-                <li class="nav-link" data-view="experiences" onclick="switchView('experiences')">Experiences</li>
+                <li class="nav-link" data-view="profile" onclick="switchView('profile')">Profile</li>
+                    <li class="nav-link" data-view="experiences" onclick="switchView('experiences')">Experiences</li>
                 <li class="nav-link" data-view="projects" onclick="switchView('projects')">Projects</li>
                 <li class="nav-link" data-view="resources" onclick="switchView('resources')">Resources</li>
                 <li class="nav-link" data-view="contact" onclick="switchView('contact')">Contact</li>
@@ -73,8 +75,8 @@
         </header>
 
         <main>
-            <!-- ============================== HOME ============================== -->
-            <section id="view-home" class="view-section active-view">
+            <!-- ============================== PROFILE ============================== -->
+            <section id="view-profile" class="view-section active-view">
 
                 <!-- Business card -->
                 <div class="profile-card">
@@ -84,8 +86,8 @@
                         </div>
                         <div class="profile-identity">
                             <div class="profile-name">Mohammed Jamai</div>
-                            <h1 class="profile-title">Mechatronics Engineer</h1>
-                            <p class="profile-skills">Model-Based Design &amp; Embedded Software</p>
+                            <h1 class="profile-title">Mechatronics Systems Engineer</h1>
+                            <p class="profile-subtitle">Powertrain, Embedded Control &amp; Model-Based Design</p>
                             <p class="profile-sectors">Automotive &amp; e-mobility, Aerospace, Energy storage</p>
                             <div class="profile-meta">
                                 <span>Toulouse, France</span>
@@ -98,69 +100,56 @@
 
                     <!-- Replace the GitHub and Jupyter URLs below with your own profiles -->
                     <div class="profile-links">
-                        <a href="https://github.com/" class="profile-btn" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-                        <a href="https://jupyter.org/" class="profile-btn" target="_blank" rel="noopener">Jupyter <span aria-hidden="true">↗</span></a>
-                        <a href="https://www.linkedin.com/in/mohammed-jamai" class="profile-btn" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/" class="profile-btn" target="_blank" rel="noopener"><img class="brand-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/github.svg" alt="" width="18" height="18" loading="lazy" onerror="this.remove()"><span>GitHub</span><span class="profile-btn-arrow" aria-hidden="true">↗</span></a>
+                        <a href="https://jupyter.org/" class="profile-btn" target="_blank" rel="noopener"><img class="brand-icon" src="https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/jupyter.svg" alt="" width="18" height="18" loading="lazy" onerror="this.remove()"><span>Jupyter</span><span class="profile-btn-arrow" aria-hidden="true">↗</span></a>
+                        <a href="https://www.linkedin.com/in/mohammed-jamai" class="profile-btn" target="_blank" rel="noopener"><img class="brand-icon" src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/svgs/brands/linkedin.svg" alt="" width="18" height="18" loading="lazy" onerror="this.remove()"><span>LinkedIn</span><span class="profile-btn-arrow" aria-hidden="true">↗</span></a>
                     </div>
                 </div>
 
                 <span class="section-label">Core Capabilities</span>
-                <div class="spec-sheet">
-                    <div class="spec-row">
-                        <div class="spec-label">Digital Twin</div>
-                        <div class="spec-value">High-fidelity validation models built with a MATLAB/Simulink spirit explicitly optimized for electrified solutions.</div>
+                <div class="capability-grid">
+                    <div class="capability">
+                        <div class="capability-index">01</div>
+                        <div class="capability-title">Digital Twins</div>
+                        <p class="capability-desc">High-fidelity Simulink models of electrified systems and architectures.</p>
                     </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Validation model (mbd)</div>
-                        <div class="spec-value">Full hardware verification loops spanning comprehensive MiL, SiL, and HiL engineering infrastructure tracks.</div>
+                    <div class="capability">
+                        <div class="capability-index">02</div>
+                        <div class="capability-title">MBD Validation</div>
+                        <p class="capability-desc">End-to-end verification loops across MiL, SiL and HiL.</p>
                     </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Powertrain, Power Electronics & Machine</div>
-                        <div class="spec-value">Integrated physical powertrain dynamics, switching converter hardware loop architectures, and electrical machine setups.</div>
+                    <div class="capability">
+                        <div class="capability-index">03</div>
+                        <div class="capability-title">Powertrain &amp; Energy</div>
+                        <p class="capability-desc">Power converters, electric machines and battery systems.</p>
                     </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Battery</div>
-                        <div class="spec-value">Dedicated analysis, design, and simulation tracking of advanced Lithium-Ion, Redox-Flow, and Hydrogen clean energy cells.</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Embedded Software</div>
-                        <div class="spec-value">Safety-critical control architecture expanded to embed comprehensive system diagnostic layers and FMEA lifecycle structures.</div>
+                    <div class="capability">
+                        <div class="capability-index">04</div>
+                        <div class="capability-title">Embedded Software</div>
+                        <p class="capability-desc">Safety-critical C/C++ with diagnostics, ISO 26262 and FMEA.</p>
                     </div>
                 </div>
 
-                <span class="section-label">Technical Skills</span>
-                <div class="spec-sheet">
-                    <div class="spec-row">
-                        <div class="spec-label">Modeling &amp; Simulation</div>
-                        <ul class="spec-value skill-tags">
-                            <li>MATLAB</li><li>Simulink</li><li>PLECS</li><li>Ansys Maxwell</li><li>FEMM</li><li>SysML</li><li>Capella</li>
-                        </ul>
+                <span class="section-label">Key Skills</span>
+                <div class="key-skills">
+                    <div class="key-skill">
+                        <div class="key-skill-title">Simulink Modeling</div>
+                        <div class="key-skill-tools">MATLAB · Simulink · PLECS</div>
                     </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Validation &amp; Test</div>
-                        <ul class="spec-value skill-tags">
-                            <li>MiL / SiL / HiL</li><li>dSPACE SCALEXIO</li><li>INCA</li><li>LabVIEW</li>
-                        </ul>
+                    <div class="key-skill">
+                        <div class="key-skill-title">HiL Testing</div>
+                        <div class="key-skill-tools">dSPACE · INCA · MiL/SiL</div>
                     </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Embedded &amp; Programming</div>
-                        <ul class="spec-value skill-tags">
-                            <li>C/C++</li><li>Python</li><li>VHDL</li><li>HLS</li><li>CAN bus</li><li>Cygwin</li><li>Git</li>
-                        </ul>
+                    <div class="key-skill">
+                        <div class="key-skill-title">Embedded C/C++</div>
+                        <div class="key-skill-tools">C/C++ · CAN bus · Python</div>
                     </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Electronics &amp; Hardware</div>
-                        <ul class="spec-value skill-tags">
-                            <li>Power electronics (PFC, DC/DC)</li><li>FPGA (Quartus)</li><li>PCB design (KiCad)</li><li>PSpice</li><li>EMC/EMI</li>
-                        </ul>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Methods &amp; Standards</div>
-                        <ul class="spec-value skill-tags">
-                            <li>ISO 26262</li><li>FMEA</li><li>V-model</li><li>Polarion</li><li>Jira</li><li>Confluence</li><li>Scrum/Kanban</li>
-                        </ul>
+                    <div class="key-skill">
+                        <div class="key-skill-title">Functional Safety</div>
+                        <div class="key-skill-tools">ISO 26262 · FMEA · Polarion</div>
                     </div>
                 </div>
+                <button class="navigation-hint key-skills-more" onclick="switchView('projects')">All technical skills on Projects. →</button>
 
                 <span class="section-label">Education</span>
                 <div class="catalogue-list">
@@ -450,6 +439,40 @@
                         </div>
                     </article>
                 </div>
+
+                <span class="section-label section-label-spaced">Technical Skills</span>
+                <div class="spec-sheet">
+                    <div class="spec-row">
+                        <div class="spec-label">Modeling &amp; Simulation</div>
+                        <ul class="spec-value skill-tags">
+                            <li>MATLAB</li><li>Simulink</li><li>PLECS</li><li>Ansys Maxwell</li><li>FEMM</li><li>SysML</li><li>Capella</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Validation &amp; Test</div>
+                        <ul class="spec-value skill-tags">
+                            <li>MiL / SiL / HiL</li><li>dSPACE SCALEXIO</li><li>INCA</li><li>LabVIEW</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Embedded &amp; Programming</div>
+                        <ul class="spec-value skill-tags">
+                            <li>C/C++</li><li>Python</li><li>VHDL</li><li>HLS</li><li>CAN bus</li><li>Cygwin</li><li>Git</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Electronics &amp; Hardware</div>
+                        <ul class="spec-value skill-tags">
+                            <li>Power electronics (PFC, DC/DC)</li><li>FPGA (Quartus)</li><li>PCB design (KiCad)</li><li>PSpice</li><li>EMC/EMI</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Methods &amp; Standards</div>
+                        <ul class="spec-value skill-tags">
+                            <li>ISO 26262</li><li>FMEA</li><li>V-model</li><li>Polarion</li><li>Jira</li><li>Confluence</li><li>Scrum/Kanban</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- ============================== RESOURCES ============================== -->
@@ -478,7 +501,7 @@
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Network</div>
-                        <div class="spec-value"><a href="https://www.linkedin.com/in/mohammed-jamai" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+                        <div class="spec-value"><a class="icon-link" href="https://www.linkedin.com/in/mohammed-jamai" target="_blank" rel="noopener"><img class="brand-icon" src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/svgs/brands/linkedin.svg" alt="" width="18" height="18" loading="lazy" onerror="this.remove()">LinkedIn Profile</a></div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Resume</div>

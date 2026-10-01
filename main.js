@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NAVIGATION — Home (logo), Experiences, Projects, Resources, Contact
+   NAVIGATION — Profile (logo + name), Experiences, Projects, Resources, Contact
    ========================================================================== */
 
 function switchView(viewName) {

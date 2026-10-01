@@ -1,6 +1,7 @@
 /* ==========================================================================
    Mohammed Jamai — Portfolio
-   Layout: fixed sidebar (desktop) + centered content column.
+   Layout: one centered container (max --layout-max) holding a sticky
+   sidebar and the content column, so the whole page stays centered.
    Breakpoints: 1600+ wide · 1200 laptop · 900 tablet (top bar) · 600 phone
    ========================================================================== */
 
@@ -20,8 +21,9 @@
     --tag-border: #d6d6d6;
     --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
+    --layout-max: 1360px;
     --sidebar-width: 240px;
-    --content-max: 960px;
+    --content-max: 920px;
     --page-pad-x: clamp(24px, 5vw, 72px);
     --page-pad-y: clamp(40px, 7vh, 80px);
     --section-gap: 56px;
@@ -55,16 +57,18 @@ a {
     display: flex;
     min-height: 100vh;
     width: 100%;
+    max-width: var(--layout-max);
+    margin: 0 auto;
 }
 
 /* --------------------------------------------------------------------------
    SIDEBAR
    -------------------------------------------------------------------------- */
 aside {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    bottom: 0;
+    height: 100vh;
+    flex: 0 0 var(--sidebar-width);
     width: var(--sidebar-width);
     padding: 32px 28px;
     border-right: 1px solid var(--border-color);
@@ -77,6 +81,34 @@ aside {
 
 .brand-block {
     margin-bottom: 48px;
+}
+
+.brand-link {
+    display: block;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    text-align: left;
+    color: var(--ink-color);
+    cursor: pointer;
+}
+
+.brand-link .full-name {
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.brand-link:hover .full-name,
+.brand-link:focus-visible .full-name {
+    color: var(--signal-orange);
+    border-bottom-color: var(--signal-orange);
+}
+
+.brand-link:focus-visible {
+    outline: 1px solid var(--signal-orange);
+    outline-offset: 6px;
 }
 
 .logo-btn {
@@ -179,7 +211,6 @@ nav {
 main {
     flex: 1;
     min-width: 0;
-    margin-left: var(--sidebar-width);
     padding: var(--page-pad-y) var(--page-pad-x);
 }
 
@@ -265,16 +296,21 @@ main {
 }
 
 h1.profile-title {
-    font-size: clamp(24px, 2.4vw, 28px);
+    font-size: clamp(24px, 2.6vw, 32px);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.15;
     margin-bottom: 8px;
 }
 
-.profile-skills {
+.profile-subtitle {
     font-size: 16px;
     font-weight: 500;
+    color: var(--ink-color);
+    padding-left: 12px;
+    border-left: 2px solid var(--signal-orange);
+    line-height: 1.4;
+    margin: 4px 0 10px;
 }
 
 .profile-sectors {
@@ -310,20 +346,140 @@ h1.profile-title {
 .profile-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     border: 1px solid var(--border-color);
-    padding: 9px 16px;
+    background-color: #ffffff;
+    padding: 9px 16px 9px 14px;
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brand-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.profile-btn-arrow {
+    color: var(--ink-muted);
+    transition: transform 0.15s ease, color 0.15s ease;
 }
 
 .profile-btn:hover,
 .profile-btn:focus-visible {
     color: var(--signal-orange);
     border-color: var(--signal-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 -1px var(--signal-orange);
+}
+
+.profile-btn:hover .profile-btn-arrow {
+    color: var(--signal-orange);
+    transform: translate(2px, -2px);
+}
+
+.icon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-link .brand-icon {
+    width: 16px;
+    height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-btn,
+    .profile-btn-arrow {
+        transition: none;
+    }
+
+    .profile-btn:hover,
+    .profile-btn:hover .profile-btn-arrow {
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   PROFILE — 4 CORE CAPABILITIES & 4 KEY SKILLS (horizontal)
+   -------------------------------------------------------------------------- */
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    margin-bottom: var(--section-gap);
+}
+
+.capability {
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 16px 18px;
+    background-color: #ffffff;
+    transition: background-color 0.15s ease;
+}
+
+.capability:hover {
+    background-color: var(--bg-color);
+}
+
+.capability-index {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--signal-orange);
+    margin-bottom: 8px;
+}
+
+.capability-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.capability-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+}
+
+.key-skills {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0 24px;
+    margin-bottom: 16px;
+}
+
+.key-skill {
+    border-top: 2px solid var(--ink-color);
+    padding-top: 12px;
+}
+
+.key-skill-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+}
+
+.key-skill-tools {
+    font-size: 12px;
+    color: var(--ink-muted);
+}
+
+.key-skills-more {
+    margin-bottom: var(--section-gap);
+}
+
+.section-label-spaced {
+    margin-top: var(--section-gap);
 }
 
 /* --------------------------------------------------------------------------
@@ -585,6 +741,10 @@ h1.profile-title {
    -------------------------------------------------------------------------- */
 .project-list {
     border-top: 1px solid var(--border-color);
+}
+
+.project-list + .section-label-spaced {
+    margin-top: var(--section-gap);
 }
 
 .project-row {
@@ -891,8 +1051,9 @@ h1.profile-title {
 /* Large monitors: a little wider column and slightly larger base text */
 @media (min-width: 1600px) {
     :root {
-        --sidebar-width: 260px;
-        --content-max: 1040px;
+        --layout-max: 1440px;
+        --sidebar-width: 250px;
+        --content-max: 980px;
     }
 
     body {
@@ -902,8 +1063,25 @@ h1.profile-title {
 
 @media (min-width: 2200px) {
     :root {
-        --sidebar-width: 280px;
-        --content-max: 1120px;
+        --layout-max: 1560px;
+        --sidebar-width: 270px;
+        --content-max: 1060px;
+    }
+
+    body {
+        font-size: 17px;
+    }
+}
+
+/* When the viewport is wider than the container, frame it on both sides
+   so the centered layout reads as intentional */
+@media (min-width: 1440px) {
+    aside {
+        border-left: 1px solid var(--border-color);
+    }
+
+    .wrapper {
+        border-right: 1px solid #e5e5e5;
     }
 }
 
@@ -915,6 +1093,10 @@ h1.profile-title {
 
     aside {
         padding: 28px 22px;
+    }
+
+    .capability-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .catalogue-item {
@@ -981,8 +1163,12 @@ h1.profile-title {
         display: none;
     }
 
+    .wrapper {
+        max-width: none;
+        border-right: 0;
+    }
+
     main {
-        margin-left: 0;
         padding-top: calc(60px + var(--page-pad-y));
     }
 
@@ -993,6 +1179,11 @@ h1.profile-title {
     .cert-grid,
     .resource-jump {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .key-skills {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 24px;
     }
 
     .project-row {
@@ -1073,13 +1264,26 @@ h1.profile-title {
 
     .profile-links {
         gap: 8px;
+        flex-wrap: nowrap;
     }
 
     .profile-btn {
         flex: 1 1 0;
         justify-content: center;
-        padding: 9px 6px;
+        gap: 6px;
+        padding: 9px 4px;
         font-size: 12px;
+        letter-spacing: 0.02em;
+        min-width: 0;
+    }
+
+    .profile-btn .brand-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .profile-btn-arrow {
+        display: none;
     }
 
     .spec-row {
@@ -1104,8 +1308,21 @@ h1.profile-title {
     }
 
     .cert-grid,
-    .resource-jump {
+    .resource-jump,
+    .capability-grid {
         grid-template-columns: 1fr;
+    }
+
+    .capability {
+        padding: 14px 16px;
+    }
+
+    .key-skills {
+        gap: 14px 16px;
+    }
+
+    .key-skill-title {
+        font-size: 14px;
     }
 
     .cert-item {
@@ -1126,6 +1343,17 @@ h1.profile-title {
         width: 100%;
         flex-direction: column;
         gap: 8px;
+    }
+}
+
+/* Very narrow phones */
+@media (max-width: 340px) {
+    .profile-links {
+        flex-wrap: wrap;
+    }
+
+    .profile-btn {
+        flex: 1 1 40%;
     }
 }
 
