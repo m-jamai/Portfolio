@@ -6,26 +6,21 @@ Static website, no build step. Open `index.html` in a browser or upload the whol
 
 ```
 portfolio/
-├── index.html              Page markup (5 views)
-├── css/
-│   └── style.css           All styles (variables, layout, components, responsive)
+├── index.html              Page markup (Home, Resume, Projects, Library, Contact)
+├── css/style.css           All styles (colors in :root at the top)
 ├── js/
-│   └── main.js             View switching (navigation)
+│   ├── main.js             Navigation + Library rendering
+│   └── library.js          YOUR Library content (edit this file)
 └── assets/
-    ├── img/
-    │   └── profile.jpg     Profile photo (3:4)
-    └── resume/
-        ├── README.txt
-        ├── Mohammed_Jamai_Resume_EN.pdf   ← add
-        ├── Mohammed_Jamai_Resume_FR.pdf   ← add
-        └── Mohammed_Jamai_Resume_AR.pdf   ← add
+    ├── img/profile.jpg     Profile photo (square)
+    ├── resume/             Your 3 resume PDFs (EN / FR / AR)
+    └── library/            Files you share in the Library
 ```
 
-## Resume downloads
+## Things to fill in
 
-Download buttons are on the Resume page (top block) and on the Contact page.
-Add your three PDFs to `assets/resume/` with the names above.
-
-## Changing colors
-
-All colors are CSS variables at the top of `css/style.css` (`:root`).
+1. **Profile links** (Home card): in `index.html`, search for `Replace the GitHub and Jupyter URLs` and put your own URLs.
+2. **Resumes**: replace the PDFs in `assets/resume/` (keep the same file names).
+3. **Certifications**: in `index.html`, section `Certifications`. Replace "Issuer · Year", and fill the 2 grey placeholders (remove the `cert-placeholder` class once filled).
+4. **Projects**: each `<article class="project-row">` in `index.html`. To use a real image, replace the text inside `project-image-slot` with `<img src="assets/img/your-image.jpg" alt="...">`.
+5. **Library**: open `js/library.js`, copy an example into `LIBRARY_ITEMS`. Filters by type appear automatically.

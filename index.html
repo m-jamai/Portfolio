@@ -14,16 +14,21 @@
     <div class="wrapper">
         <aside>
             <div class="brand-block">
-                <div class="initials">MJ</div>
+                <button class="logo-btn" onclick="switchView('home')" aria-label="Back to home">
+                    <svg class="logo" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+                        <rect x="16" y="16" width="32" height="32"/>
+                        <path d="M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8"/>
+                        <path class="logo-accent" d="M28 26l-6 6 6 6M36 26l6 6-6 6"/>
+                    </svg>
+                </button>
                 <div class="full-name">Mohammed Jamai</div>
             </div>
-            
+
             <nav>
                 <ul class="nav-list">
-                    <li class="nav-link active" onclick="switchView('home')">Home</li>
                     <li class="nav-link" onclick="switchView('resume')">Resume</li>
                     <li class="nav-link" onclick="switchView('projects')">Projects</li>
-                    <li class="nav-link" onclick="switchView('journal')">Journal</li>
+                    <li class="nav-link" onclick="switchView('library')">Library</li>
                     <li class="nav-link" onclick="switchView('contact')">Contact</li>
                 </ul>
             </nav>
@@ -42,29 +47,53 @@
         </aside>
 
         <header class="mobile-header">
-            <div class="mobile-brand" onclick="switchView('home')">MJ</div>
+            <button class="logo-btn mobile-brand" onclick="switchView('home')" aria-label="Back to home">
+                <svg class="logo" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
+                    <rect x="16" y="16" width="32" height="32"/>
+                    <path d="M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8"/>
+                    <path class="logo-accent" d="M28 26l-6 6 6 6M36 26l6 6-6 6"/>
+                </svg>
+            </button>
             <ul class="mobile-nav">
-                <li class="nav-link active" onclick="switchView('home')">Home</li>
                 <li class="nav-link" onclick="switchView('resume')">Resume</li>
                 <li class="nav-link" onclick="switchView('projects')">Projects</li>
-                <li class="nav-link" onclick="switchView('journal')">Journal</li>
+                <li class="nav-link" onclick="switchView('library')">Library</li>
                 <li class="nav-link" onclick="switchView('contact')">Contact</li>
             </ul>
         </header>
 
         <main>
-            <!-- HOME VIEW -->
+            <!-- HOME VIEW (landing page) -->
             <section id="view-home" class="view-section active-view">
-                <div class="home-grid">
-                    <div class="home-text-block">
-                        <h1 class="hero-headline">Mechatronics engineer — Model-Based Design, embedded systems and power electronics.</h1>
-                        <p class="sub-hero">Experienced with electric powertrains, model verification, and high-fidelity multi-physics loops.</p>
+
+                <!-- Business card -->
+                <div class="profile-card">
+                    <div class="profile-card-top">
+                        <div class="profile-photo">
+                            <img src="assets/img/profile.jpg" alt="Portrait of Mohammed Jamai" width="600" height="600">
+                        </div>
+                        <div class="profile-identity">
+                            <div class="profile-name">Mohammed Jamai</div>
+                            <h1 class="profile-title">Mechatronics Engineer</h1>
+                            <p class="profile-skills">Model-Based Design &amp; Embedded Software</p>
+                            <p class="profile-sectors">Automotive &amp; e-mobility, Aerospace, Energy storage</p>
+                            <div class="profile-meta">
+                                <span>Toulouse, France</span>
+                                <span class="availability-line"><span class="status-dot"></span> Available for new projects</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="profile-image-container">
-                        <img src="assets/img/profile.jpg" alt="Portrait of Mohammed Jamai" width="540" height="720">
+
+                    <p class="profile-bio">I design, model and validate embedded systems for electric and hybrid powertrains, from Simulink models and MiL/SiL/HiL test loops to safety-critical ECU software. I have worked with automotive OEMs, hydrogen bus makers and energy companies.</p>
+
+                    <!-- Replace the GitHub and Jupyter URLs below with your own profiles -->
+                    <div class="profile-links">
+                        <a href="https://github.com/" class="profile-btn" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+                        <a href="https://jupyter.org/" class="profile-btn" target="_blank" rel="noopener">Jupyter <span aria-hidden="true">↗</span></a>
+                        <a href="https://www.linkedin.com/in/mohammed-jamai" class="profile-btn" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
-                
+
                 <span class="section-label">Core Capabilities</span>
                 <div class="spec-sheet">
                     <div class="spec-row">
@@ -89,12 +118,6 @@
                     </div>
                 </div>
 
-                <span class="section-label">AI Strategy Space</span>
-                <div class="ai-deployment-box">
-                    <div class="ai-title">Simulation Accelerated by AI</div>
-                    <div class="ai-desc">Deploying machine learning models, surrogate frameworks, and specialized network topologies to accelerate complex physical engineering simulations and multi-physics phenomena.</div>
-                </div>
-
                 <div class="navigation-hint" onclick="switchView('resume')">Full experience and education on Resume. →</div>
 
                 <div class="mobile-footer-info">
@@ -108,6 +131,165 @@
 
             <!-- RESUME VIEW -->
             <section id="view-resume" class="view-section">
+                <span class="section-label">Education</span>
+                <div class="catalogue-list">
+                    <div class="edu-item">
+                        <div class="edu-date">2019–2022</div>
+                        <div class="edu-details">
+                            <div class="edu-degree">ENSEEIHT, Toulouse INP</div>
+                            <div class="edu-school">Engineering degree, Electrical and Electronics Engineering (Electrodynamics and Advanced Mechatronics)</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>VHDL</li><li>HLS</li><li>Quartus</li><li>PSpice</li>
+                        </ul>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-date">2021–2022</div>
+                        <div class="edu-details">
+                            <div class="edu-degree">Université Toulouse III Paul Sabatier</div>
+                            <div class="edu-school">Double degree, M2, Energy, Materials and Sustainable Development</div>
+                        </div>
+                        <ul class="skill-tags"></ul>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-date">2018–2019</div>
+                        <div class="edu-details">
+                            <div class="edu-degree">INSSET, Université de Picardie Jules Verne</div>
+                            <div class="edu-school">Licence (bachelor's), Embedded Systems</div>
+                        </div>
+                        <ul class="skill-tags"></ul>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-date">2016–2018</div>
+                        <div class="edu-details">
+                            <div class="edu-degree">École Supérieure de Technologie, Oujda</div>
+                            <div class="edu-school">Technical degree (DUT), Electronics and Industrial Computing</div>
+                        </div>
+                        <ul class="skill-tags"></ul>
+                    </div>
+                </div>
+
+                <span class="section-label">Certifications</span>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-name">Electrical work authorization (level B1)</div>
+                        <div class="cert-issuer">Issuer · Year</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Programming in C++</div>
+                        <div class="cert-issuer">OpenClassrooms · Year</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Analyzing project risk</div>
+                        <div class="cert-issuer">OpenClassrooms · Year</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Linguaskill Business (B2–C1)</div>
+                        <div class="cert-issuer">Cambridge English · Year</div>
+                    </div>
+                    <div class="cert-item cert-placeholder">
+                        <div class="cert-name">Certification name</div>
+                        <div class="cert-issuer">Issuer · Year</div>
+                    </div>
+                    <div class="cert-item cert-placeholder">
+                        <div class="cert-name">Certification name</div>
+                        <div class="cert-issuer">Issuer · Year</div>
+                    </div>
+                </div>
+
+                <span class="section-label">Languages</span>
+                <div class="spec-sheet">
+                    <div class="spec-row">
+                        <div class="spec-label">Languages</div>
+                        <div class="spec-value">French (fluent), English (Linguaskill Business, B2–C1), Arabic (native)</div>
+                    </div>
+                </div>
+
+                <span class="section-label">Professional Experience</span>
+                <div class="catalogue-list">
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">01</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">Vitesco Technologies (Schaeffler Group)</div>
+                            <div class="catalogue-meta">Oct 2023 – Sep 2025 · Model-Based Design Engineer (Toulouse, France)</div>
+                            <div class="catalogue-desc">Modeled and validated embedded components for electric and hybrid powertrains using MiL, SiL and HiL loops for Renault, Mercedes-Benz and Ford. Executed rigorous physical domain parameters tracking across the HV Box 2.0/3.0 platform development sequences and engineered Ford's 48V DC-DC converter simulation models.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>MATLAB/Simulink</li><li>PLECS</li><li>dSPACE SCALEXIO</li><li>INCA</li><li>FPGA</li><li>MiL / SiL / HiL</li><li>PFC &amp; DC/DC</li><li>EMC/EMI</li><li>Git</li><li>Jira</li><li>V-model</li>
+                        </ul>
+                    </div>
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">02</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">Safra</div>
+                            <div class="catalogue-meta">Jul 2022 – Sep 2023 · Embedded Software Engineer (Albi, France)</div>
+                            <div class="catalogue-desc">Developed ECU safety-critical software functions for driving, propulsion, thermal comfort, and onboard systems managing HYCITY and BUSINOVA hydrogen fuel cell buses. Managed precise upstream requirements traceability infrastructures in Polarion to ensure complete alignment with ISO 26262 functional safety conditions.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>C/C++</li><li>CAN bus</li><li>Cygwin</li><li>Embedded Diagnostics</li><li>ISO 26262</li><li>FMEA</li><li>Polarion</li><li>Confluence</li><li>Scrum/Kanban</li>
+                        </ul>
+                    </div>
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">03</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">Artelia Group</div>
+                            <div class="catalogue-meta">Feb 2022 – Jun 2022 · Battery Modeling Engineer (Lyon, France)</div>
+                            <div class="catalogue-desc">Modeled high-fidelity lithium-ion and redox-flow stationary battery system characteristics in MATLAB/Simulink for TotalEnergies workflows. Built techno-economic CAPEX/OPEX calculation algorithms and packaged code bases into small custom Windows tools using Python.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>MATLAB/Simulink</li><li>Python</li><li>Battery aging &amp; SoH</li><li>CAPEX/OPEX</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <span class="section-label">Internship & Academic Projects</span>
+                <div class="catalogue-list">
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">04</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">Kythera</div>
+                            <div class="catalogue-meta">Feb 2022 · Mechatronics Engineer Internship (Colomiers, France)</div>
+                            <div class="catalogue-desc">Designed, configured, and implemented an operational modular servomotor validation test bench. Handled industrial sensor instrumentation tasks, complex structural mechanical integration steps, and low-level custom PCB architectural design tracks.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>KiCad</li><li>LabVIEW</li><li>PCB design</li><li>Instrumentation</li>
+                        </ul>
+                    </div>
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">05</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">Safran & ArianeGroup</div>
+                            <div class="catalogue-meta">Sep 2021 – Feb 2022 · Electric Turboprop Design Project (Toulouse, France)</div>
+                            <div class="catalogue-desc">Contributed directly to the complex multi-physics sizing framework simulations targeting an electric turboprop design intended to balance Pratt & Whitney PT6 performance milestones.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>Ansys Maxwell</li><li>MATLAB</li><li>SysML</li>
+                        </ul>
+                    </div>
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">06</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">CNRS</div>
+                            <div class="catalogue-meta">Mar 2021 – Jul 2021 · Materials Testing and Instrumentation Project (France)</div>
+                            <div class="catalogue-desc">Designed custom experimental laboratory setups to safely control, capture, and fully characterize advanced nickel-titanium shape-memory alloy structures under mechanical loads.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>PCB design</li><li>Data acquisition</li><li>LabVIEW</li>
+                        </ul>
+                    </div>
+                    <div class="catalogue-item">
+                        <div class="catalogue-index">07</div>
+                        <div class="catalogue-body">
+                            <div class="company-header">OCP Group</div>
+                            <div class="catalogue-meta">Apr 2017 – Jun 2017 · Electronic Technician Internship (Youssoufia, Morocco)</div>
+                            <div class="catalogue-desc">Managed electrical maintenance routines, safety analysis sequences, and instrument monitoring workflows right inside an industrial phosphate calcination plant workspace.</div>
+                        </div>
+                        <ul class="skill-tags">
+                            <li>Electrical maintenance</li><li>Safety analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="resume-download">
                     <div>
                         <div class="resume-download-title">Download Resume</div>
@@ -125,214 +307,117 @@
                         </a>
                     </div>
                 </div>
-
-                <span class="section-label">Education</span>
-                <div class="catalogue-list">
-                    <div class="edu-item">
-                        <div class="edu-date">2019–2022</div>
-                        <div class="edu-details">
-                            <div class="edu-degree">ENSEEIHT, Toulouse INP</div>
-                            <div class="edu-school">Engineering degree, Electrical and Electronics Engineering (Electrodynamics and Advanced Mechatronics)</div>
-                        </div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-date">2021–2022</div>
-                        <div class="edu-details">
-                            <div class="edu-degree">Université Toulouse III Paul Sabatier</div>
-                            <div class="edu-school">Double degree, M2, Energy, Materials and Sustainable Development</div>
-                        </div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-date">2018–2019</div>
-                        <div class="edu-details">
-                            <div class="edu-degree">INSSET, Université de Picardie Jules Verne</div>
-                            <div class="edu-school">Licence (bachelor's), Embedded Systems</div>
-                        </div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-date">2016–2018</div>
-                        <div class="edu-details">
-                            <div class="edu-degree">École Supérieure de Technologie, Oujda</div>
-                            <div class="edu-school">Technical degree (DUT), Electronics and Industrial Computing</div>
-                        </div>
-                    </div>
-                </div>
-
-                <span class="section-label">Technical Specs</span>
-                <div class="spec-sheet">
-                    <div class="spec-row">
-                        <div class="spec-label">Tools</div>
-                        <div class="spec-value">MATLAB/Simulink, Ansys Maxwell, PLECS, dSPACE SCALEXIO, INCA, LabVIEW, C/C++, Python, VHDL, HLS, Quartus, SysML, KiCad, PSpice</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Process & Diagnostics</div>
-                        <div class="spec-value">Embedded Diagnostics, FMEA, Git, Polarion, Jira, Confluence, Scrum/Kanban, V-model, ISO 26262</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Languages</div>
-                        <div class="spec-value">French (fluent), English (Linguaskill Business, B2–C1), Arabic (native)</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-label">Certifications</div>
-                        <div class="spec-value">Electrical work authorization (level B1), Programming in C++ (OpenClassrooms), Analyzing project risk (OpenClassrooms), Linguaskill Business</div>
-                    </div>
-                </div>
-
-                <span class="section-label">Professional Experience</span>
-                <div class="catalogue-list">
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">01</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">Vitesco Technologies (Schaeffler Group)</div>
-                            <div class="catalogue-meta">Oct 2023 – Sep 2025 · Model-Based Design Engineer (Toulouse, France)</div>
-                            <div class="catalogue-desc">Modeled and validated embedded components for electric and hybrid powertrains using MiL, SiL and HiL loops for Renault, Mercedes-Benz and Ford. Executed rigorous physical domain parameters tracking across the HV Box 2.0/3.0 platform development sequences and engineered Ford's 48V DC-DC converter simulation models.</div>
-                        </div>
-                    </div>
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">02</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">Safra</div>
-                            <div class="catalogue-meta">Jul 2022 – Sep 2023 · Embedded Software Engineer (Albi, France)</div>
-                            <div class="catalogue-desc">Developed ECU safety-critical software functions for driving, propulsion, thermal comfort, and onboard systems managing HYCITY and BUSINOVA hydrogen fuel cell buses. Managed precise upstream requirements traceability infrastructures in Polarion to ensure complete alignment with ISO 26262 functional safety conditions.</div>
-                        </div>
-                    </div>
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">03</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">Artelia Group</div>
-                            <div class="catalogue-meta">Feb 2022 – Jun 2022 · Battery Modeling Engineer (Lyon, France)</div>
-                            <div class="catalogue-desc">Modeled high-fidelity lithium-ion and redox-flow stationary battery system characteristics in MATLAB/Simulink for TotalEnergies workflows. Built techno-economic CAPEX/OPEX calculation algorithms and packaged code bases into small custom Windows tools using Python.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <span class="section-label">Internship & Academic Projects</span>
-                <div class="catalogue-list">
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">04</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">Kythera</div>
-                            <div class="catalogue-meta">Feb 2022 · Mechatronics Engineer Internship (Colomiers, France)</div>
-                            <div class="catalogue-desc">Designed, configured, and implemented an operational modular servomotor validation test bench. Handled industrial sensor instrumentation tasks, complex structural mechanical integration steps, and low-level custom PCB architectural design tracks.</div>
-                        </div>
-                    </div>
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">05</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">Safran & ArianeGroup</div>
-                            <div class="catalogue-meta">Sep 2021 – Feb 2022 · Electric Turboprop Design Project (Toulouse, France)</div>
-                            <div class="catalogue-desc">Contributed directly to the complex multi-physics sizing framework simulations targeting an electric turboprop design intended to balance Pratt & Whitney PT6 performance milestones.</div>
-                        </div>
-                    </div>
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">06</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">CNRS</div>
-                            <div class="catalogue-meta">Mar 2021 – Jul 2021 · Materials Testing and Instrumentation Project (France)</div>
-                            <div class="catalogue-desc">Designed custom experimental laboratory setups to safely control, capture, and fully characterize advanced nickel-titanium shape-memory alloy structures under mechanical loads.</div>
-                        </div>
-                    </div>
-                    <div class="catalogue-item">
-                        <div class="catalogue-index">07</div>
-                        <div class="catalogue-body">
-                            <div class="company-header">OCP Group</div>
-                            <div class="catalogue-meta">Apr 2017 – Jun 2017 · Electronic Technician Internship (Youssoufia, Morocco)</div>
-                            <div class="catalogue-desc">Managed electrical maintenance routines, safety analysis sequences, and instrument monitoring workflows right inside an industrial phosphate calcination plant workspace.</div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- PROJECTS VIEW -->
             <section id="view-projects" class="view-section">
-                <span class="section-label">Master Explainer Video</span>
-                <div class="master-video-block">
-                    <span>[ Master Showcase Video Stream Box — 16:9 ]</span>
-                </div>
-
                 <span class="section-label">Personal Work Samples</span>
-                <div class="projects-grid">
-                    <div class="project-card">
+                <div class="project-list">
+                    <article class="project-row">
                         <div class="project-image-slot">[ Demo Image 01 ]</div>
-                        <div class="project-title">Project Alpha</div>
-                        <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
-                        <a href="#" class="project-action" onclick="return false;">See Project →</a>
-                    </div>
-                    <div class="project-card">
+                        <div class="project-body">
+                            <div class="project-title">Project Alpha</div>
+                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <dl class="project-facts">
+                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Year</dt><dd>—</dd></div>
+                                <div><dt>Stack</dt><dd>—</dd></div>
+                            </dl>
+                            <div class="project-links">
+                                <a href="#" class="project-action" onclick="return false;">See Project →</a>
+                                <a href="#" class="project-action" onclick="return false;">Code →</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-row">
                         <div class="project-image-slot">[ Demo Image 02 ]</div>
-                        <div class="project-title">Project Beta</div>
-                        <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
-                        <a href="#" class="project-action" onclick="return false;">See Project →</a>
-                    </div>
-                    <div class="project-card">
+                        <div class="project-body">
+                            <div class="project-title">Project Beta</div>
+                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <dl class="project-facts">
+                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Year</dt><dd>—</dd></div>
+                                <div><dt>Stack</dt><dd>—</dd></div>
+                            </dl>
+                            <div class="project-links">
+                                <a href="#" class="project-action" onclick="return false;">See Project →</a>
+                                <a href="#" class="project-action" onclick="return false;">Code →</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-row">
                         <div class="project-image-slot">[ Demo Image 03 ]</div>
-                        <div class="project-title">Project Gamma</div>
-                        <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
-                        <a href="#" class="project-action" onclick="return false;">See Project →</a>
-                    </div>
-                    <div class="project-card">
+                        <div class="project-body">
+                            <div class="project-title">Project Gamma</div>
+                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <dl class="project-facts">
+                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Year</dt><dd>—</dd></div>
+                                <div><dt>Stack</dt><dd>—</dd></div>
+                            </dl>
+                            <div class="project-links">
+                                <a href="#" class="project-action" onclick="return false;">See Project →</a>
+                                <a href="#" class="project-action" onclick="return false;">Code →</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-row">
                         <div class="project-image-slot">[ Demo Image 04 ]</div>
-                        <div class="project-title">Project Delta</div>
-                        <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
-                        <a href="#" class="project-action" onclick="return false;">See Project →</a>
-                    </div>
-                    <div class="project-card">
+                        <div class="project-body">
+                            <div class="project-title">Project Delta</div>
+                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <dl class="project-facts">
+                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Year</dt><dd>—</dd></div>
+                                <div><dt>Stack</dt><dd>—</dd></div>
+                            </dl>
+                            <div class="project-links">
+                                <a href="#" class="project-action" onclick="return false;">See Project →</a>
+                                <a href="#" class="project-action" onclick="return false;">Code →</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-row">
                         <div class="project-image-slot">[ Demo Image 05 ]</div>
-                        <div class="project-title">Project Epsilon</div>
-                        <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
-                        <a href="#" class="project-action" onclick="return false;">See Project →</a>
-                    </div>
-                    <div class="project-card">
+                        <div class="project-body">
+                            <div class="project-title">Project Epsilon</div>
+                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <dl class="project-facts">
+                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Year</dt><dd>—</dd></div>
+                                <div><dt>Stack</dt><dd>—</dd></div>
+                            </dl>
+                            <div class="project-links">
+                                <a href="#" class="project-action" onclick="return false;">See Project →</a>
+                                <a href="#" class="project-action" onclick="return false;">Code →</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-row">
                         <div class="project-image-slot">[ Demo Image 06 ]</div>
-                        <div class="project-title">Project Zeta</div>
-                        <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
-                        <a href="#" class="project-action" onclick="return false;">See Project →</a>
-                    </div>
+                        <div class="project-body">
+                            <div class="project-title">Project Zeta</div>
+                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <dl class="project-facts">
+                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Year</dt><dd>—</dd></div>
+                                <div><dt>Stack</dt><dd>—</dd></div>
+                            </dl>
+                            <div class="project-links">
+                                <a href="#" class="project-action" onclick="return false;">See Project →</a>
+                                <a href="#" class="project-action" onclick="return false;">Code →</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
-            <!-- JOURNAL VIEW -->
-            <section id="view-journal" class="view-section">
-                <span class="section-label">Notes & Ressources</span>
-                
-                <ul class="journal-simple-list">
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">MATLAB and Simulink Onramps <span>Coursework</span></div>
-                        <a href="https://www.mathworks.com" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">Simscape Electrical Documentation <span>Reference Guide</span></div>
-                        <a href="https://www.mathworks.com" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">MATLAB Central File Exchange <span>Repository</span></div>
-                        <a href="https://www.mathworks.com" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">ISO 26262 Road Vehicles Functional Safety <span>Standard Specification</span></div>
-                        <a href="#" onclick="return false;" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">Barr Group's Embedded C Coding Standard <span>Compliance Rules</span></div>
-                        <a href="https://barrgroup.com" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">Pro Git Comprehensive Documentation <span>Version Control Book</span></div>
-                        <a href="https://git-scm.com" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">Battery University Knowledge Database <span>Electrochemistry Matrix</span></div>
-                        <a href="https://batteryuniversity.com" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">PyBaMM Physical Battery Multi-Physics Library <span>Python Engine</span></div>
-                        <a href="https://www.pybamm.org" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                    <div class="journal-simple-item">
-                        <div class="journal-simple-meta">Power Electronics Specialization Coursera Notes <span>Masterclass Series</span></div>
-                        <a href="https://www.coursera.org" target="_blank" rel="noopener" class="journal-simple-link">View Link</a>
-                    </div>
-                </ul>
+            <!-- LIBRARY VIEW (content comes from js/library.js) -->
+            <section id="view-library" class="view-section">
+                <span class="section-label">Library</span>
+                <p class="library-intro">Articles, documents, notes and recommendations I share.</p>
+                <div class="library-filters" id="library-filters" role="tablist" aria-label="Filter by type"></div>
+                <div class="library-list" id="library-list"></div>
             </section>
 
             <!-- CONTACT VIEW -->
@@ -340,7 +425,7 @@
                 <span class="section-label">Enquiries</span>
                 <h2 class="contact-large-header">Contact</h2>
                 <p class="contact-intro">Tell me about your system, your timeline, and where you're stuck. I reply within two working days.</p>
-                
+
                 <div class="spec-sheet">
                     <div class="spec-row">
                         <div class="spec-label">Email</div>
@@ -369,6 +454,7 @@
         </main>
     </div>
 
+    <script src="js/library.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
