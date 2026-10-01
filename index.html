@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!--
+    CONTENT MAP — each piece of information lives in ONE place only
+    (see "Content guidelines" in README.md)
+
+    Sidebar ...... logo (= Home), name, navigation, availability
+    Home ......... business card (photo, title, location, bio, profile links),
+                   core capabilities, technical skills, education,
+                   certifications, languages
+    Experiences .. professional experience, internships & academic projects,
+                   resume download (EN / FR / AR)
+    Projects ..... personal and technical projects
+    Resources .... content from js/resources.js (3 categories)
+    Contact ...... email, location, LinkedIn, resume links
+-->
 
     <div class="wrapper">
         <aside>
@@ -24,29 +38,24 @@
                 <div class="full-name">Mohammed Jamai</div>
             </div>
 
-            <nav>
+            <nav aria-label="Main">
                 <ul class="nav-list">
-                    <li class="nav-link" onclick="switchView('resume')">Resume</li>
-                    <li class="nav-link" onclick="switchView('projects')">Projects</li>
-                    <li class="nav-link" onclick="switchView('library')">Library</li>
-                    <li class="nav-link" onclick="switchView('contact')">Contact</li>
+                    <li class="nav-link" data-view="experiences" onclick="switchView('experiences')">Experiences</li>
+                    <li class="nav-link" data-view="projects" onclick="switchView('projects')">Projects</li>
+                    <li class="nav-link" data-view="resources" onclick="switchView('resources')">Resources</li>
+                    <li class="nav-link" data-view="contact" onclick="switchView('contact')">Contact</li>
                 </ul>
             </nav>
 
             <div class="meta-block">
-                <div class="location-line">Toulouse, France</div>
                 <div class="availability-line">
                     <span class="status-dot"></span>
                     Available for new projects
                 </div>
-                <div class="contact-links">
-                    <a href="mailto:jamai-mohammed@hotmail.com">jamai-mohammed@hotmail.com</a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
             </div>
         </aside>
 
-        <header class="mobile-header">
+        <header class="mobile-header" id="mobile-header">
             <button class="logo-btn mobile-brand" onclick="switchView('home')" aria-label="Back to home">
                 <svg class="logo" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">
                     <rect x="16" y="16" width="32" height="32"/>
@@ -54,16 +63,17 @@
                     <path class="logo-accent" d="M28 26l-6 6 6 6M36 26l6 6-6 6"/>
                 </svg>
             </button>
-            <ul class="mobile-nav">
-                <li class="nav-link" onclick="switchView('resume')">Resume</li>
-                <li class="nav-link" onclick="switchView('projects')">Projects</li>
-                <li class="nav-link" onclick="switchView('library')">Library</li>
-                <li class="nav-link" onclick="switchView('contact')">Contact</li>
+            <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+            <ul class="mobile-nav" id="mobile-nav">
+                <li class="nav-link" data-view="experiences" onclick="switchView('experiences')">Experiences</li>
+                <li class="nav-link" data-view="projects" onclick="switchView('projects')">Projects</li>
+                <li class="nav-link" data-view="resources" onclick="switchView('resources')">Resources</li>
+                <li class="nav-link" data-view="contact" onclick="switchView('contact')">Contact</li>
             </ul>
         </header>
 
         <main>
-            <!-- HOME VIEW (landing page) -->
+            <!-- ============================== HOME ============================== -->
             <section id="view-home" class="view-section active-view">
 
                 <!-- Business card -->
@@ -118,19 +128,40 @@
                     </div>
                 </div>
 
-                <div class="navigation-hint" onclick="switchView('resume')">Full experience and education on Resume. →</div>
-
-                <div class="mobile-footer-info">
-                    <span class="section-label">Availability</span>
-                    <div class="availability-line" style="margin-bottom: 12px;">
-                        <span class="status-dot"></span> Available for new projects
+                <span class="section-label">Technical Skills</span>
+                <div class="spec-sheet">
+                    <div class="spec-row">
+                        <div class="spec-label">Modeling &amp; Simulation</div>
+                        <ul class="spec-value skill-tags">
+                            <li>MATLAB</li><li>Simulink</li><li>PLECS</li><li>Ansys Maxwell</li><li>FEMM</li><li>SysML</li><li>Capella</li>
+                        </ul>
                     </div>
-                    <p style="font-size: 14px;"><a href="mailto:jamai-mohammed@hotmail.com" style="text-decoration: underline;">jamai-mohammed@hotmail.com</a></p>
+                    <div class="spec-row">
+                        <div class="spec-label">Validation &amp; Test</div>
+                        <ul class="spec-value skill-tags">
+                            <li>MiL / SiL / HiL</li><li>dSPACE SCALEXIO</li><li>INCA</li><li>LabVIEW</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Embedded &amp; Programming</div>
+                        <ul class="spec-value skill-tags">
+                            <li>C/C++</li><li>Python</li><li>VHDL</li><li>HLS</li><li>CAN bus</li><li>Cygwin</li><li>Git</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Electronics &amp; Hardware</div>
+                        <ul class="spec-value skill-tags">
+                            <li>Power electronics (PFC, DC/DC)</li><li>FPGA (Quartus)</li><li>PCB design (KiCad)</li><li>PSpice</li><li>EMC/EMI</li>
+                        </ul>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Methods &amp; Standards</div>
+                        <ul class="spec-value skill-tags">
+                            <li>ISO 26262</li><li>FMEA</li><li>V-model</li><li>Polarion</li><li>Jira</li><li>Confluence</li><li>Scrum/Kanban</li>
+                        </ul>
+                    </div>
                 </div>
-            </section>
 
-            <!-- RESUME VIEW -->
-            <section id="view-resume" class="view-section">
                 <span class="section-label">Education</span>
                 <div class="catalogue-list">
                     <div class="edu-item">
@@ -139,9 +170,6 @@
                             <div class="edu-degree">ENSEEIHT, Toulouse INP</div>
                             <div class="edu-school">Engineering degree, Electrical and Electronics Engineering (Electrodynamics and Advanced Mechatronics)</div>
                         </div>
-                        <ul class="skill-tags">
-                            <li>VHDL</li><li>HLS</li><li>Quartus</li><li>PSpice</li>
-                        </ul>
                     </div>
                     <div class="edu-item">
                         <div class="edu-date">2021–2022</div>
@@ -149,7 +177,6 @@
                             <div class="edu-degree">Université Toulouse III Paul Sabatier</div>
                             <div class="edu-school">Double degree, M2, Energy, Materials and Sustainable Development</div>
                         </div>
-                        <ul class="skill-tags"></ul>
                     </div>
                     <div class="edu-item">
                         <div class="edu-date">2018–2019</div>
@@ -157,7 +184,6 @@
                             <div class="edu-degree">INSSET, Université de Picardie Jules Verne</div>
                             <div class="edu-school">Licence (bachelor's), Embedded Systems</div>
                         </div>
-                        <ul class="skill-tags"></ul>
                     </div>
                     <div class="edu-item">
                         <div class="edu-date">2016–2018</div>
@@ -165,7 +191,6 @@
                             <div class="edu-degree">École Supérieure de Technologie, Oujda</div>
                             <div class="edu-school">Technical degree (DUT), Electronics and Industrial Computing</div>
                         </div>
-                        <ul class="skill-tags"></ul>
                     </div>
                 </div>
 
@@ -200,11 +225,24 @@
                 <span class="section-label">Languages</span>
                 <div class="spec-sheet">
                     <div class="spec-row">
-                        <div class="spec-label">Languages</div>
-                        <div class="spec-value">French (fluent), English (Linguaskill Business, B2–C1), Arabic (native)</div>
+                        <div class="spec-label">French</div>
+                        <div class="spec-value">Fluent</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">English</div>
+                        <div class="spec-value">B2–C1 (Linguaskill Business)</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Arabic</div>
+                        <div class="spec-value">Native</div>
                     </div>
                 </div>
 
+                <button class="navigation-hint" onclick="switchView('experiences')">Professional and project experience on Experiences. →</button>
+            </section>
+
+            <!-- ============================ EXPERIENCES ============================ -->
+            <section id="view-experiences" class="view-section">
                 <span class="section-label">Professional Experience</span>
                 <div class="catalogue-list">
                     <div class="catalogue-item">
@@ -309,19 +347,21 @@
                 </div>
             </section>
 
-            <!-- PROJECTS VIEW -->
+            <!-- ============================== PROJECTS ============================== -->
+            <!-- To use a real image: replace the text inside .project-image-slot with
+                 <img src="assets/img/projects/your-image.jpg" alt="..."> -->
             <section id="view-projects" class="view-section">
-                <span class="section-label">Personal Work Samples</span>
+                <span class="section-label">Projects</span>
                 <div class="project-list">
                     <article class="project-row">
-                        <div class="project-image-slot">[ Demo Image 01 ]</div>
+                        <div class="project-image-slot">[ Project image ]</div>
                         <div class="project-body">
-                            <div class="project-title">Project Alpha</div>
-                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <div class="project-head"><span class="project-index">01</span><h2 class="project-title">CO₂ Emissions Calculation</h2></div>
+                            <p class="project-description">Tool to calculate and estimate CO₂ emissions from energy consumption and activity data, using standard emission factors, to compare scenarios and support lower-carbon decisions.</p>
                             <dl class="project-facts">
-                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Domain</dt><dd>Energy &amp; sustainability</dd></div>
+                                <div><dt>Tools</dt><dd>Python</dd></div>
                                 <div><dt>Year</dt><dd>—</dd></div>
-                                <div><dt>Stack</dt><dd>—</dd></div>
                             </dl>
                             <div class="project-links">
                                 <a href="#" class="project-action" onclick="return false;">See Project →</a>
@@ -330,14 +370,14 @@
                         </div>
                     </article>
                     <article class="project-row">
-                        <div class="project-image-slot">[ Demo Image 02 ]</div>
+                        <div class="project-image-slot">[ Project image ]</div>
                         <div class="project-body">
-                            <div class="project-title">Project Beta</div>
-                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <div class="project-head"><span class="project-index">02</span><h2 class="project-title">Brushless Motor Control</h2></div>
+                            <p class="project-description">Development of the control system of a brushless motor: commutation logic and speed and current control loops, designed and tuned in simulation before implementation on a microcontroller.</p>
                             <dl class="project-facts">
-                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Domain</dt><dd>Motor control</dd></div>
+                                <div><dt>Tools</dt><dd>MATLAB/Simulink, Embedded C</dd></div>
                                 <div><dt>Year</dt><dd>—</dd></div>
-                                <div><dt>Stack</dt><dd>—</dd></div>
                             </dl>
                             <div class="project-links">
                                 <a href="#" class="project-action" onclick="return false;">See Project →</a>
@@ -346,14 +386,14 @@
                         </div>
                     </article>
                     <article class="project-row">
-                        <div class="project-image-slot">[ Demo Image 03 ]</div>
+                        <div class="project-image-slot">[ Project image ]</div>
                         <div class="project-body">
-                            <div class="project-title">Project Gamma</div>
-                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <div class="project-head"><span class="project-index">03</span><h2 class="project-title">20 A Renault Charger</h2></div>
+                            <p class="project-description">Development and design of a 20 A charger for Renault: power stage architecture (PFC and DC/DC conversion), simulation models and validation of the charger behavior.</p>
                             <dl class="project-facts">
-                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Domain</dt><dd>Power electronics</dd></div>
+                                <div><dt>Tools</dt><dd>MATLAB/Simulink, PLECS</dd></div>
                                 <div><dt>Year</dt><dd>—</dd></div>
-                                <div><dt>Stack</dt><dd>—</dd></div>
                             </dl>
                             <div class="project-links">
                                 <a href="#" class="project-action" onclick="return false;">See Project →</a>
@@ -362,14 +402,14 @@
                         </div>
                     </article>
                     <article class="project-row">
-                        <div class="project-image-slot">[ Demo Image 04 ]</div>
+                        <div class="project-image-slot">[ Project image ]</div>
                         <div class="project-body">
-                            <div class="project-title">Project Delta</div>
-                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <div class="project-head"><span class="project-index">04</span><h2 class="project-title">PMSM FEM Analysis</h2></div>
+                            <p class="project-description">Finite element analysis of a permanent magnet synchronous machine (PMSM): magnetic flux distribution, back-EMF, torque and cogging torque, with post-processing of the results in MATLAB.</p>
                             <dl class="project-facts">
-                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Domain</dt><dd>Electrical machines</dd></div>
+                                <div><dt>Tools</dt><dd>ANSYS, FEMM, MATLAB</dd></div>
                                 <div><dt>Year</dt><dd>—</dd></div>
-                                <div><dt>Stack</dt><dd>—</dd></div>
                             </dl>
                             <div class="project-links">
                                 <a href="#" class="project-action" onclick="return false;">See Project →</a>
@@ -378,14 +418,14 @@
                         </div>
                     </article>
                     <article class="project-row">
-                        <div class="project-image-slot">[ Demo Image 05 ]</div>
+                        <div class="project-image-slot">[ Project image ]</div>
                         <div class="project-body">
-                            <div class="project-title">Project Epsilon</div>
-                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <div class="project-head"><span class="project-index">05</span><h2 class="project-title">MBD Model</h2></div>
+                            <p class="project-description">Model-Based Design workflow: plant and controller models built in Simulink, then verified through MiL and SiL tests against the requirements.</p>
                             <dl class="project-facts">
-                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Domain</dt><dd>Model-Based Design</dd></div>
+                                <div><dt>Tools</dt><dd>MATLAB/Simulink, MiL / SiL</dd></div>
                                 <div><dt>Year</dt><dd>—</dd></div>
-                                <div><dt>Stack</dt><dd>—</dd></div>
                             </dl>
                             <div class="project-links">
                                 <a href="#" class="project-action" onclick="return false;">See Project →</a>
@@ -394,14 +434,14 @@
                         </div>
                     </article>
                     <article class="project-row">
-                        <div class="project-image-slot">[ Demo Image 06 ]</div>
+                        <div class="project-image-slot">[ Project image ]</div>
                         <div class="project-body">
-                            <div class="project-title">Project Zeta</div>
-                            <div class="project-description">Custom simulation environment or embedded script sample repository template. Ready for code mapping.</div>
+                            <div class="project-head"><span class="project-index">06</span><h2 class="project-title">Capella / MBSE</h2></div>
+                            <p class="project-description">Model-Based Systems Engineering with Capella and the Arcadia method: operational analysis, then system, logical and physical architectures, with traceability from needs to components.</p>
                             <dl class="project-facts">
-                                <div><dt>Role</dt><dd>—</dd></div>
+                                <div><dt>Domain</dt><dd>Systems engineering</dd></div>
+                                <div><dt>Tools</dt><dd>Capella, Arcadia</dd></div>
                                 <div><dt>Year</dt><dd>—</dd></div>
-                                <div><dt>Stack</dt><dd>—</dd></div>
                             </dl>
                             <div class="project-links">
                                 <a href="#" class="project-action" onclick="return false;">See Project →</a>
@@ -412,15 +452,16 @@
                 </div>
             </section>
 
-            <!-- LIBRARY VIEW (content comes from js/library.js) -->
-            <section id="view-library" class="view-section">
-                <span class="section-label">Library</span>
-                <p class="library-intro">Articles, documents, notes and recommendations I share.</p>
-                <div class="library-filters" id="library-filters" role="tablist" aria-label="Filter by type"></div>
-                <div class="library-list" id="library-list"></div>
+            <!-- ============================== RESOURCES ============================== -->
+            <!-- Content comes from js/resources.js -->
+            <section id="view-resources" class="view-section">
+                <span class="section-label">Resources</span>
+                <p class="section-intro">What I write, what I share and what I recommend.</p>
+                <div class="resource-jump" id="resource-jump"></div>
+                <div id="resource-blocks"></div>
             </section>
 
-            <!-- CONTACT VIEW -->
+            <!-- ============================== CONTACT ============================== -->
             <section id="view-contact" class="view-section">
                 <span class="section-label">Enquiries</span>
                 <h2 class="contact-large-header">Contact</h2>
@@ -429,7 +470,7 @@
                 <div class="spec-sheet">
                     <div class="spec-row">
                         <div class="spec-label">Email</div>
-                        <div class="spec-value"><a href="mailto:jamai-mohammed@hotmail.com" style="text-decoration: underline;">jamai-mohammed@hotmail.com</a></div>
+                        <div class="spec-value"><a href="mailto:jamai-mohammed@hotmail.com">jamai-mohammed@hotmail.com</a></div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Location</div>
@@ -437,7 +478,7 @@
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Network</div>
-                        <div class="spec-value"><a href="https://linkedin.com" target="_blank" rel="noopener" style="text-decoration: underline;">LinkedIn Profile</a></div>
+                        <div class="spec-value"><a href="https://www.linkedin.com/in/mohammed-jamai" target="_blank" rel="noopener">LinkedIn Profile</a></div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label">Resume</div>
@@ -454,7 +495,7 @@
         </main>
     </div>
 
-    <script src="js/library.js"></script>
+    <script src="js/resources.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
